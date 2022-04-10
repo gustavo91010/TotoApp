@@ -5,6 +5,7 @@
 package TudoApp.util;
 
 import TudoApp.model.Task;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -37,6 +38,17 @@ public class TaskTableModel extends AbstractTableModel {
         
         return columns[columnIndex];
     }
+    
+     proxima aula, 16h
+    
+    @Override // esse metodo permite que a coluna escolhida seja editavel
+    public boolean isCellEditable( int rowIndex, int columnIndex ){
+        if(columnIndex == 3){
+            return true;
+        }
+        
+        return false;
+    }
 
     @Override // esse me retorna uma informação correspondente a uma linha e uma coluna especifica
     public Object getValueAt(int rowIndex, int columnIndex) {
@@ -50,7 +62,8 @@ public class TaskTableModel extends AbstractTableModel {
                 // quando a coluna 2 eu pego o nome da minha tarefa que esta na posição rowIndex
                 return tasks.get(rowIndex).getDescription();
             case 2:
-                return tasks.get(rowIndex).getDeadline();
+                SimpleDateFormat sdf= new SimpleDateFormat("dd-MM-yy");
+                return sdf.format(tasks.get(rowIndex).getDeadline());
             case 3:
                 return tasks.get(rowIndex).getIsCompleted();
             case 4:
