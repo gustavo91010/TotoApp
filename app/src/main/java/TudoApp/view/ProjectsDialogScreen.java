@@ -166,19 +166,29 @@ public class ProjectsDialogScreen extends javax.swing.JDialog {
     private void jLabelToobarSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelToobarSaveMouseClicked
 
         try {
+            
+            if(jTextFieldName.getText().equals("")){
+                JOptionPane.showMessageDialog(
+                        rootPane, "O projeto não salvo, pois o campo Nome não foi preenchido.");
+            }else{
+                
+            
+            
             Project project= new Project();
             project.setName(jTextFieldName.getText());
             project.setDescription(jTextAreaDescription.getText());
             controller.save(project);
         
             JOptionPane.showMessageDialog(rootPane, "Projeto salvo com sucesso.");
-        
+             this.dispose();
+            // fecha a janela
+            }
          // para fechar o evento
         } catch (Exception e) {
             // quando der algum erro na hora de salvar, eu pego a mensagem de erro e mostro ao usuario
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
-            this.dispose();
+           // this.dispose();
         
     }//GEN-LAST:event_jLabelToobarSaveMouseClicked
 

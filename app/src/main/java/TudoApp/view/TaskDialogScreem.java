@@ -201,28 +201,33 @@ public class TaskDialogScreem extends javax.swing.JDialog {
         // TODO add your handling code here:
 
         try {
+
+            // se o nome ou o prazo nao forem setados, a tarefa nap sera salva
+            if (jTextFieldDescriptionName.getText().equals("")  ||  jFormattedTextFieldPrazoDescription.getText().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "A tarefa não foi salva, pois existem campos obrigatorios a serem preenchidos");
+            }else{
+
             Task task = new Task();
 
-            task.setIdPreoject( project.getId());
-           
+            task.setIdPreoject(project.getId());
 
             task.setName(jTextFieldDescriptionName.getText());
             task.setDescription(jTextFieldDescricaoDescription.getText());
             task.setNotes(jTextAreaNotasDeescription.getText());
 
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-            Date deadline ;
+            Date deadline;
             deadline = dateFormat.parse(jFormattedTextFieldPrazoDescription.getText());
             task.setDeadline(deadline);
 
             controller.save(task);
             JOptionPane.showMessageDialog(rootPane, "Tarefa salva com sucesso!");
-
-            
+            this.dispose(); // febha a janela
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
-        this.dispose();
+
     }//GEN-LAST:event_jLabelSaveTitleMouseClicked
 
     private void jFormattedTextFieldPrazoDescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldPrazoDescriptionActionPerformed
