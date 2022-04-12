@@ -66,7 +66,7 @@ public class TaskController {
                  + "idProject= ?, "
                 + "name= ?, "
                 + "description= ?, "
-                + "completed= ?, "
+                + "isCompleted= ?, "
                 + "notes= ?, "
                 + "deadline= ?, "
                 //+ "createdAT= ?, "
@@ -80,8 +80,8 @@ public class TaskController {
             stmt.setInt(1, task.getIdPreoject());
             stmt.setString(2, task.getName());
             stmt.setString(3, task.getDescription());
-          //  stmt.setBoolean(4, task.getIsCompleted());
-            stmt.setBoolean(4, false);
+          stmt.setBoolean(4, task.getIsCompleted());
+            //stmt.setBoolean(4, false);
             stmt.setString(5, task.getNotes());
             stmt.setDate(6, new Date(task.getDeadline().getTime()));
            // stmt.setDate(7, new Date(task.getCreatedAt().getTime()));

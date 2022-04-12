@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 public class TaskDialogScreem extends javax.swing.JDialog {
 
     TaskController controller;
-    Project projeto;
+    Project project;
 
     /**
      * Creates new form UltimaTela
@@ -203,7 +203,7 @@ public class TaskDialogScreem extends javax.swing.JDialog {
         try {
             Task task = new Task();
 
-            task.setIdPreoject(9);
+            task.setIdPreoject( project.getId());
            
 
             task.setName(jTextFieldDescriptionName.getText());
@@ -218,6 +218,7 @@ public class TaskDialogScreem extends javax.swing.JDialog {
             controller.save(task);
             JOptionPane.showMessageDialog(rootPane, "Tarefa salva com sucesso!");
 
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
@@ -288,8 +289,8 @@ public class TaskDialogScreem extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldDescriptionName;
     // End of variables declaration//GEN-END:variables
 
-    public void setProjeto(Project projeto) {
-        this.projeto = projeto;
+    public void setProjeto(Project project) {
+        this.project = project;
     }
 
 }

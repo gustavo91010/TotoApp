@@ -162,6 +162,7 @@ public class ProjectsDialogScreen extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldNameActionPerformed
 
+    
     private void jLabelToobarSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelToobarSaveMouseClicked
 
         try {

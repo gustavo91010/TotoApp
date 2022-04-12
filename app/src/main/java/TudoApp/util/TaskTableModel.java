@@ -39,7 +39,7 @@ public class TaskTableModel extends AbstractTableModel {
         return columns[columnIndex];
     }
     
-     proxima aula, 16h
+     
     
     @Override // esse metodo permite que a coluna escolhida seja editavel
     public boolean isCellEditable( int rowIndex, int columnIndex ){
@@ -50,6 +50,18 @@ public class TaskTableModel extends AbstractTableModel {
         return false;
     }
 
+    @Override // qual a classe do componente que esta referido na coluna
+    public Class<?>  getColumnClass( int columnIndex ){
+        
+        if ( tasks.isEmpty() ){
+        
+        return Object.class;
+    }
+        return this.getValueAt(0, columnIndex).getClass();
+        // ele va dizer o tipo do dado da coluna, se é String, int, boolean ou etc.
+        
+    }
+    
     @Override // esse me retorna uma informação correspondente a uma linha e uma coluna especifica
     public Object getValueAt(int rowIndex, int columnIndex) {
 
@@ -73,8 +85,22 @@ public class TaskTableModel extends AbstractTableModel {
             default:
                 return "Dados nao encontrados";
         }
-
+        
+            }
+    
+    
+    
+    
+    @Override // esse metodo marca a columna "tarefa concluida" , com true or false
+    public void setValueAt(Object aValue, int rowIndex, int columnIndex){
+       
+        // o cash (boolean) esta convertendo pra boolean o object aValue
+        // e salvo na list tasks
+        tasks.get(rowIndex).setIsCompleted((boolean) aValue);
+        
+        
     }
+    
 
     public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
